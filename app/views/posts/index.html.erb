@@ -1,3 +1,13 @@
-Display all of your posts here
+<h1>Posts</h1>
 
-<!-- Create the rest of your views in the posts folder -->
+<%=@posts.each do |post| %>
+<div>
+<strong> <%=post.bru_name %> </strong>
+<p> <%= link_to post.title, post_path(post) %> </p>
+<p><%=post.body %> </p>
+<p> <%= button_to "Delete", post_path(post),
+method: :delete, data: {confirm: "Are you sure?"} %></p>
+</div>
+<% end %>
+
+<p><%= link_to "New Post", new_post_path %> </p>
